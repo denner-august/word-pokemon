@@ -1,0 +1,3 @@
+interface pokemonsProps{
+    name: string,
+}
