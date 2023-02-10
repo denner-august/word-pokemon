@@ -1,3 +1,6 @@
+import styles from './card.module.scss'
+import { FetchPokemon } from '@/fetch/fetch_pokemon'
 export function CarPokemon() {
-    return <h1>pokemon card</h1>
+
+    return <ul className={styles.Container}> <FetchPokemon /> </ul>
 }

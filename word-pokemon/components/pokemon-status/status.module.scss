@@ -1,0 +1,22 @@
+.Status_Container{
+    height: auto;
+    min-height: 15rem;
+    width: auto;
+    border-radius: 5px;
+
+    margin: 10px;
+    background-color: #eff5f2;
+
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    li{
+        font-size: 1.2rem;
+        margin:1px 0rem;
+    }
+
+   
+}
