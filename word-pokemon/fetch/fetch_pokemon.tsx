@@ -53,7 +53,7 @@ export function FetchPokemon(): any {
     }, [])
 
     function PokemonInformation() {
-        for (let i = 1; i <= 400; i++) {
+        for (let i = 1; i <= 100; i++) {
             axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => {
 
                 let finde = pokemons.find((item) => item.id === response.data.id)
