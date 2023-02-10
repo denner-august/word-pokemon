@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.scss'
 import { CarPokemon } from '@/components/pokemon-list'
+import { PesquisaPokemon } from '@/components/search-pokemon/pesquisa_Pokemon'
 
 export default function Home() {
   return (
@@ -12,6 +13,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <h1>Word Pokemon</h1>
+
+        <PesquisaPokemon />
+
         <CarPokemon />
       </main>
     </>
