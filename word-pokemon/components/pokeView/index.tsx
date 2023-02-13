@@ -47,7 +47,7 @@ export function PokeView({ pokemons }: PokemonsProps) {
                             </SwiperSlide>
 
                             <SwiperSlide >
-                                <Status stats={pokemon_status} />
+                                <Status key={Math.random()} stats={pokemon_status} />
                             </SwiperSlide>
                         </div>
                     </Swiper>
