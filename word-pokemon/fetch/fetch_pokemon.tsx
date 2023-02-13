@@ -1,23 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
-import Image from 'next/image'
 import axios from 'axios'
 
-import { Status } from '@/components/pokemon-status/pokemon_Status';
+import { PokeView } from '@/components/pokeView';
 
-import styles from '../components/pokemon-list/card.module.scss'
-
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// import required modules
-import { EffectFlip, Pagination, Navigation } from "swiper";
-
-// Import Swiper styles
-
-import "swiper/css";
-import "swiper/css/effect-flip";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import { ContextPokemon } from '@/context/context_Pokemon';
 
 export function FetchPokemon(): any {
@@ -67,39 +52,7 @@ export function FetchPokemon(): any {
     }
 
     if (pokemons) {
-        return pokemonsList.map((pokemon) => {
-            let pokemon_status = pokemon.stats.map((status) => status)
-
-            return (
-                <Swiper
-                    key={pokemon.sprites.other.dream_world.front_default}
-                    effect={"flip"}
-                    grabCursor={true}
-                    pagination={true}
-                    modules={[EffectFlip, Pagination, Navigation]}
-                    className={styles.swiper} >
-                    <div>
-                        <SwiperSlide >
-                            <li className={styles.card}>
-                                {pokemon.types.map((pokemon) => <p key={pokemon.url}>{pokemon.type.name}</p>)}
-                                <Image
-                                    src={`${pokemon.sprites.other.dream_world.front_default}`}
-                                    alt="Picture of the author"
-                                    width={150}
-                                    height={150}
-                                />
-
-                                <p> {pokemon.name} </p>
-                            </li>
-                        </SwiperSlide>
-
-                        <SwiperSlide >
-                            <Status stats={pokemon_status} />
-                        </SwiperSlide>
-                    </div>
-                </Swiper>
-            )
-        })
+        return <PokeView pokemons={pokemonsList} />
     }
 
 }
