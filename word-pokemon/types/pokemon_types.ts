@@ -17,3 +17,4 @@ export interface ContextProps {
     setPokemons:any
 }
 
+export type PokemonsProps = Partial<ContextProps>
