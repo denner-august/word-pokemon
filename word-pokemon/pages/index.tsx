@@ -1,9 +1,23 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.scss'
+import { useContext, useEffect } from 'react'
+import axios from 'axios'
+
+import { GetStaticProps } from 'next'
 import { CarPokemon } from '@/components/pokemon-list'
 import { PesquisaPokemon } from '@/components/search-pokemon/pesquisa_Pokemon'
 
-export default function Home() {
+import { ContextPokemon } from '@/context/context_Pokemon'
+import { PokemonsProps } from '@/types/pokemon_types'
+
+export default function Home({ pokemons }: PokemonsProps) {
+
+  const { setPokemons } = useContext(ContextPokemon)
+
+  useEffect(() => {
+    setPokemons(pokemons)
+  }, [pokemons, setPokemons])
+
   return (
     <>
       <Head>
@@ -21,4 +35,20 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+
+  let pokemons: PokemonsProps[] = []
+
+  for (let i = 1; i <= 100; i++) {
+    let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`).then(response => response.data)
+    pokemons.push(response)
+  }
+
+  return {
+    props: { pokemons },
+    revalidate: false,
+
+  }
 }
